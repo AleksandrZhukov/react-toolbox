@@ -5,7 +5,8 @@ class CheckboxTest extends React.Component {
   state = {
     checkbox_1: true,
     checkbox_2: false,
-    checkbox_3: true
+    checkbox_3: true,
+    checkbox_4: false
   };
 
   handleChange = (field, value) => {
@@ -48,6 +49,14 @@ class CheckboxTest extends React.Component {
           onFocus={this.handleFocus}
           onBlur={this.handleBlur}
         />
+        <Checkbox
+          checked={this.state.checkbox_4}
+          onChange={this.handleChange.bind(this, 'checkbox_4')}
+          onFocus={this.handleFocus}
+          onBlur={this.handleBlur}
+        >
+          Children as a label
+        </Checkbox>
       </section>
     );
   }

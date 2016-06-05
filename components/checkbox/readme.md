@@ -7,7 +7,11 @@
 import Checkbox from 'react-toolbox/lib/checkbox';
 
 class TestCheckbox extends React.Component {
-  state = { check1: true, check2: false };
+  state = { 
+    check1: true, 
+    check2: false,
+    check3: false
+  };
 
   handleChange = (field, value) => {
     this.setState({...this.state, [field]: value});
@@ -31,6 +35,12 @@ class TestCheckbox extends React.Component {
           disabled
           label="Disabled checkbox"
         />
+        <Checkbox
+         checked={this.state.check3} 
+         onChange={this.handleChange.bind(this, 'check3')
+        >
+          Children as a label
+        </Checkbox>
       </div>
     );
   }
@@ -43,7 +53,8 @@ If you want to provide a theme via context, the component key is `RTCheckbox`.
 
 | Name              | Type          | Default         | Description|
 |:-----|:-----|:-----|:-----|
-| `checked`       | `Boolean`       | `false`         | Value for the checkbox, can be `true` or `false`. |
+| `checked`       | `Boolean`       | `false`         | Value for the checkbox, can be `true` or `false`.|
+| `children`      | `Node`          |                 | Children as a label.|
 | `className`     | `String`        | `''`            | Sets a class to give customized styles to the checkbox field.|
 | `disabled`      | `Boolean`       | `false`         | If true, the checkbox shown as disabled and cannot be modified.|
 | `label`         | `String`        |                 | Text label to attach next to the checkbox element.|

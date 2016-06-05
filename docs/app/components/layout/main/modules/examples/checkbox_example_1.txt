@@ -1,7 +1,8 @@
 class TestCheckbox extends React.Component {
   state = {
     check1: true,
-    check2: false
+    check2: false,
+    check3: false
   };
 
   handleChange = (field, value) => {
@@ -26,6 +27,12 @@ class TestCheckbox extends React.Component {
           disabled
           label="Disabled checkbox"
         />
+        <Checkbox
+          checked={this.state.check3}
+          onChange={this.handleChange.bind(this, 'check3')}
+        >
+          Children as a label
+        </Checkbox>
       </div>
     );
   }

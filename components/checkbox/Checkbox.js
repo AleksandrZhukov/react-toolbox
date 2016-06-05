@@ -9,6 +9,7 @@ const factory = (Check) => {
   class Checkbox extends Component {
     static propTypes = {
       checked: PropTypes.bool,
+      children: PropTypes.node,
       className: PropTypes.string,
       disabled: PropTypes.bool,
       label: PropTypes.any,
@@ -43,10 +44,11 @@ const factory = (Check) => {
     }
 
     render () {
-      const { onChange, theme, ...others } = this.props; //eslint-disable-line no-unused-vars
+      const { onChange, theme, children, label, ...others } = this.props; //eslint-disable-line no-unused-vars
       const className = classnames(theme.field, {
         [theme.disabled]: this.props.disabled
       }, this.props.className);
+      const checkboxLabel = children ? children : label;
 
       return (
         <label data-react-toolbox='checkbox' className={className}>
@@ -64,7 +66,7 @@ const factory = (Check) => {
             rippleClassName={theme.ripple}
             theme={this.props.theme}
           />
-          {this.props.label ? <span data-react-toolbox='label' className={theme.text}>{this.props.label}</span> : null}
+          {checkboxLabel ? <span data-react-toolbox='label' className={theme.text}>{checkboxLabel}</span> : null}
         </label>
       );
     }
